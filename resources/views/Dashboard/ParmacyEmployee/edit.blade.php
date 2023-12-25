@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal fade" id="edit{{ $parmacy->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات موظف</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('ParmacyEmployee.update', $parmacy->id) }}" method="post">
+                {{ method_field('patch') }}
+                {{ csrf_field() }}
+                @csrf
+                <div class="modal-body">
+                    <label for="exampleInputPassword1">الاسم</label>
+                    <input type="text" value="{{$parmacy->name}}" name="name" class="form-control"><br>
+
+                    <label for="exampleInputPassword1">البريد الالكتروني</label>
+                    <input type="email" value="{{$parmacy->email}}" name="email" class="form-control"><br>
+
+                    <label for="exampleInputPassword1">كلمة المرور</label>
+                    <input type="password" name="password" class="form-control" autocomplete="new-password">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Dashboard/sections.close')}}</button>
+                    <button type="submit" class="btn btn-success">{{trans('Dashboard/sections.submit')}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
